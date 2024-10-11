@@ -76,7 +76,11 @@ export class UserService extends PaginationService<User> {
 
     const user = await this.userRepository.findById(userId);
 
-    await this.checkUserExistByEmail(email);
+    const { email: currentEmail } = user ?? {};
+
+    if (currentEmail !== email) {
+      await this.checkUserExistByEmail(email);
+    }
 
     await user?.update({ firstName, lastName, email });
     await user?.profile?.update(profile);
