@@ -1,0 +1,4 @@
+{
+  "**/*.{js,ts,md,html,json}": "prettier --check .",
+  "**/*.{js,ts}": "eslint --max-warnings 10 ."
+}
